@@ -1,7 +1,7 @@
 package com.example.coroutineflow.util
 
-sealed class Result<T>{
-    class Error(e:Throwable) : Result<Throwable>()
-    class Success<R>(val data:R):Result<R>()
+sealed class Result<out R>{
+    class Error(val e:Throwable) : Result<Nothing>()
+    object Success : Result<Nothing>()
     object Loading : Result<Nothing>()
 }
